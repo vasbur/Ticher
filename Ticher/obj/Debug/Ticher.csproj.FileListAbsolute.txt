@@ -1,0 +1,12 @@
+C:\GIT\GoodProjects\tech\Ticher\Ticher\bin\Debug\Ticher.exe.config
+C:\GIT\GoodProjects\tech\Ticher\Ticher\bin\Debug\Ticher.exe
+C:\GIT\GoodProjects\tech\Ticher\Ticher\bin\Debug\Ticher.pdb
+C:\GIT\GoodProjects\tech\Ticher\Ticher\obj\Debug\Ticher.csprojResolveAssemblyReference.cache
+C:\GIT\GoodProjects\tech\Ticher\Ticher\obj\Debug\Ticher.exe
+C:\GIT\GoodProjects\tech\Ticher\Ticher\obj\Debug\Ticher.pdb
+C:\GIT\Ticher\Ticher\bin\Debug\Ticher.exe.config
+C:\GIT\Ticher\Ticher\obj\Debug\Ticher.exe
+C:\GIT\Ticher\Ticher\obj\Debug\Ticher.pdb
+C:\GIT\Ticher\Ticher\bin\Debug\Ticher.exe
+C:\GIT\Ticher\Ticher\bin\Debug\Ticher.pdb
+C:\GIT\Ticher\Ticher\obj\Debug\Ticher.csprojResolveAssemblyReference.cache

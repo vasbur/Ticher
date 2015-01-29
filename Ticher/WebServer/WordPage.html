@@ -1,0 +1,57 @@
+﻿<!DOCTYPE HTML>
+<html  lang="en" xmlns="http://www.w3.org/1999/xhtml">
+ <head>
+  <meta charset="utf-8"/>
+  <title>Обучение</title>
+<style>
+td.response:hover
+{
+	background: grey
+}
+
+td.response
+{
+	font-size: 4em
+}
+
+a
+{ 
+visibility:hidden
+}
+</style>
+
+
+  <script>
+      function resp(ind) {
+          elem = document.getElementById("resp" + ind);
+          if (ind == $ansverNumber$) {
+              elem.style.background = "green";
+
+              ref = document.getElementById("nextClick");
+              ref.style.visibility = "visible";
+
+          }
+          else {
+              elem.style.background = "red";
+          }
+      }
+
+    </script>
+
+ </head>
+ <body>
+
+<table  border="1">
+<tr>
+	<td colspan="3" style="color: red; font-size: 6em"> $word$ </td>
+</tr>
+<tr> 
+<td class="response" id="resp0" onclick = "resp(0)"> $translation0$</td>
+<td class="response"   id="resp1" onclick = "resp(1)"> $translation1$</td>
+<td class="response"  id="resp2"  onclick = "resp(2)"> $translation2$</td>
+</tr>
+</table>
+
+<a id="nextClick" href="\next"> дальше </a>
+</body>
+</html>
