@@ -17,8 +17,7 @@ namespace Ticher.WebServer
             while (!st.EndOfStream)
                 result += st.ReadLine();
 
-            DictionarySet dict = new DictionarySet();
-            Quiz q = dict.getQuiz();
+            Quiz q = DictionarySet.getQuiz();
 
             result = result.Replace("$word$", q.word);
             result = result.Replace("$ansverNumber$", q.ansverNumber.ToString());

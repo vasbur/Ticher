@@ -11,7 +11,6 @@ namespace Ticher
     {
         static void Main(string[] args)
         {
-            DictionarySet ds = new DictionarySet(); 
             try
             {
                 WebServer.ServerRoot srv = new WebServer.ServerRoot();

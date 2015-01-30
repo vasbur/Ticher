@@ -5,6 +5,8 @@ using System.Linq;
 using System.Net;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Serialization;
+using Ticher.Translater.XmlParser;
 
 namespace Ticher.Translater
 {
@@ -12,8 +14,10 @@ namespace Ticher.Translater
     {
         static public string GetTranslation(string word)
         {
-            getDataFile(word);
-            return "xxx";
+            string filename = getDataFile(word);
+            DicResult trans = getTranslationData(filename);
+
+            return (trans.def.tr.Count>0)?trans.def.tr[0].text.name:"xxx";
 
         }
 
@@ -53,5 +57,18 @@ namespace Ticher.Translater
             return path; 
  
         }
+    
+    static private DicResult getTranslationData(string filename)
+        {
+            StreamReader SR = new StreamReader(filename);
+            string str = SR.ReadToEnd();
+
+            XmlSerializer xml = new XmlSerializer(typeof(DicResult));
+            DicResult  res = (DicResult)xml.Deserialize(new MemoryStream(Encoding.UTF8.GetBytes(str)));
+
+            return res;
+        }
+
+    
     }
 }

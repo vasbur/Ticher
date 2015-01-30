@@ -46,6 +46,10 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Translater\TranslaterTools.cs" />
+    <Compile Include="Translater\XmlParser\Def.cs" />
+    <Compile Include="Translater\XmlParser\DicResult.cs" />
+    <Compile Include="Translater\XmlParser\Text.cs" />
+    <Compile Include="Translater\XmlParser\Tr.cs" />
     <Compile Include="WebServer\ResponseThread.cs" />
     <Compile Include="WebServer\ServerRoot.cs" />
     <Compile Include="WebServer\WordPage.cs" />

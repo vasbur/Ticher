@@ -15,15 +15,15 @@ namespace Ticher.Dictionary
         public int ansverNumber; 
 
     }
-    class DictionarySet
+   static class DictionarySet
     {
-        List<DictionaryItem> itemList;
+        static List<DictionaryItem> itemList;
 
-        private void LoadDict()
+        static private void LoadDict()
         {
             StreamReader sr = new StreamReader("C:\\GIT\\Ticher\\data.csv");
 
-            for (int i = 0; i < 2000; i++)
+            for (int i = 0; i < 1000; i++)
             {
                 string itemLine = sr.ReadLine();
                 string word = itemLine.Substring(0, itemLine.IndexOf(";"));
@@ -36,14 +36,14 @@ namespace Ticher.Dictionary
 
         }
 
-        public DictionarySet()
+        static  DictionarySet()
         {
             itemList = new List<DictionaryItem>();
             LoadDict();
        
         }
 
-        public Quiz getQuiz()
+        static public Quiz getQuiz()
         {
             Quiz result = new Quiz();
 
