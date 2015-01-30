@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Ticher.Dictionary;
 
 namespace Ticher
 {
@@ -10,6 +11,7 @@ namespace Ticher
     {
         static void Main(string[] args)
         {
+            DictionarySet ds = new DictionarySet(); 
             try
             {
                 WebServer.ServerRoot srv = new WebServer.ServerRoot();

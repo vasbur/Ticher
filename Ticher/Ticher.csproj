@@ -45,6 +45,7 @@
     <Compile Include="Dictionary\DictionarySet.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Translater\TranslaterTools.cs" />
     <Compile Include="WebServer\ResponseThread.cs" />
     <Compile Include="WebServer\ServerRoot.cs" />
     <Compile Include="WebServer\WordPage.cs" />

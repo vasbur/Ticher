@@ -10,11 +10,13 @@ namespace Ticher.Dictionary
     {
         public string word { get; set; }
         public string translation { get; set; }
+        public float frequensy { get; set; }
 
-        public DictionaryItem(string word, string translation)
+        public DictionaryItem(string word, string translation, float frequensy)
         {
             this.translation = translation;
             this.word = word;
+            this.frequensy = frequensy;
         }
     }
 }

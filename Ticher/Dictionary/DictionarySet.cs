@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Ticher.Translater;
 
 namespace Ticher.Dictionary
 {
@@ -17,19 +19,28 @@ namespace Ticher.Dictionary
     {
         List<DictionaryItem> itemList;
 
+        private void LoadDict()
+        {
+            StreamReader sr = new StreamReader("C:\\GIT\\Ticher\\data.csv");
+
+            for (int i = 0; i < 2000; i++)
+            {
+                string itemLine = sr.ReadLine();
+                string word = itemLine.Substring(0, itemLine.IndexOf(";"));
+                itemLine = itemLine.Substring(word.Length+1);
+                string freq = itemLine.Substring(0, itemLine.IndexOf(";"));
+
+                string translation = TranslaterTools.GetTranslation(word);
+                itemList.Add(new DictionaryItem(word, translation, float.Parse(freq)));
+            }
+
+        }
+
         public DictionarySet()
         {
             itemList = new List<DictionaryItem>();
-            itemList.Add(new DictionaryItem("table", "стол"));
-            itemList.Add(new DictionaryItem("house", "дом"));
-            itemList.Add(new DictionaryItem("cat", "кошка"));
-            itemList.Add(new DictionaryItem("dog", "собака"));
-            itemList.Add(new DictionaryItem("mouse", "мышь"));
-            itemList.Add(new DictionaryItem("computer", "компьютер"));
-            itemList.Add(new DictionaryItem("love", "любовь"));
-            itemList.Add(new DictionaryItem("pen", "ручка"));
-            itemList.Add(new DictionaryItem("knife", "нож"));
-
+            LoadDict();
+       
         }
 
         public Quiz getQuiz()

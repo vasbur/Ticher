@@ -1,0 +1,2 @@
+<?xml version="1.0" encoding="utf-8"?>
+<DicResult><head/><def pos="numeral" ts="sevn"><text>seven</text><tr pos="числительное"><text>семь</text><ex><text>ninety-seven</text><tr><text>девяносто семь</text></tr></ex></tr><tr pos="числительное"><text>семеро</text></tr></def><def pos="noun" ts="sevn"><text>seven</text><tr pos="существительное"><text>семерка</text><ex><text>pocket sevens</text><tr><text>карманные семерки</text></tr></ex></tr></def><def pos="adverb" ts="sevn"><text>seven</text><tr pos="наречие"><text>семью</text></tr></def></DicResult>
