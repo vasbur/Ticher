@@ -11,6 +11,8 @@ namespace Ticher
     {
         static void Main(string[] args)
         {
+            Dictionary.DictionarySet.getQuiz(9);
+            Console.WriteLine("dictionary is load");
             try
             {
                 WebServer.ServerRoot srv = new WebServer.ServerRoot();

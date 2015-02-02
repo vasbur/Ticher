@@ -17,7 +17,28 @@ namespace Ticher.Translater
             string filename = getDataFile(word);
             DicResult trans = getTranslationData(filename);
 
-            return (trans.def.tr.Count>0)?trans.def.tr[0].text.name:"xxx";
+            if ((trans.def == null) || (trans.def.tr.Count == 0))
+            {
+                Console.WriteLine(" no trans for " + word);
+                return null;
+            }
+
+            return trans.def.tr[0].text.name;
+
+        }
+
+        static public string GetPos(string word)
+        {
+            string filename = getDataFile(word);
+            DicResult trans = getTranslationData(filename);
+
+            if ((trans.def == null) || (trans.def.tr.Count == 0))
+            {
+                Console.WriteLine(" no trans for " + word);
+                return null;
+            }
+
+            return trans.def.pos;
 
         }
 
@@ -50,10 +71,19 @@ namespace Ticher.Translater
                 throw e;
             }
 
-            StreamWriter SW = new StreamWriter(path);
-            SW.Write(s);
-            SW.Close();
+            try
+            {
+                StreamWriter SW = new StreamWriter(path);
+                SW.Write(s);
+                SW.Close();
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+                throw e;
+            }
 
+           
             return path; 
  
         }
