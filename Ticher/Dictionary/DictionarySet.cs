@@ -23,7 +23,7 @@ namespace Ticher.Dictionary
         {
             StreamReader sr = new StreamReader("C:\\GIT\\Ticher\\data.csv");
 
-            for (int i = 0; i < 5000; i++)
+            for (int i = 0; i < 500; i++)
             {
                 string itemLine = sr.ReadLine();
                 string word = itemLine.Substring(0, itemLine.IndexOf(";"));
@@ -65,16 +65,27 @@ namespace Ticher.Dictionary
             result.ansverNumber = ran.Next(3);
             result.translationList = new List<string>();
 
-            List<string> listOfVar = itemList.Where(x => ((x.pos == trueResponse.pos) && (x.word != trueResponse.word))).Select(x => x.translation).ToList();
-
+            
             for (int i = 0; i < numberOfVariant; i++)
                 if (i == result.ansverNumber)
                     result.translationList.Add(trueResponse.translation);
                 else
-                   result.translationList.Add(listOfVar[ran.Next(listOfVar.Count)]);
-            
+                {
+                    List<string> listOfVar = itemList.Where(x => ((x.pos == trueResponse.pos) && (x.word != trueResponse.word)))
+                                                     .Where(x => (isInto(result.translationList, x.translation)==false))
+                                                     .Select(x => x.translation).ToList();
+                    if (listOfVar.Count > 0)
+                        result.translationList.Add(listOfVar[ran.Next(listOfVar.Count)]);
+                    else
+                        result.translationList.Add("");
+                }
             return result;
         
+        }
+
+        static private bool isInto(List<string> translationList, string word)
+        {
+            return (translationList.Where(x => (x == word)).ToList().Count > 0);
         }
     }
 }
