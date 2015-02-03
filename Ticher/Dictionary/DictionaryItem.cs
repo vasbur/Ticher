@@ -12,13 +12,15 @@ namespace Ticher.Dictionary
         public string translation { get; set; }
         public float frequensy { get; set; }
         public string pos { get; set; }
+        public int rank { get; set; }
 
-        public DictionaryItem(string word, string pos, string translation, float frequensy)
+        public DictionaryItem(string word, string pos, string translation, float frequensy, int rank )
         {
             this.translation = translation;
             this.pos = pos;
             this.word = word;
             this.frequensy = frequensy;
+            this.rank = rank;
         }
     }
 }

@@ -22,18 +22,9 @@ visibility:hidden
 
 
   <script>
-      function resp(ind) {
-          elem = document.getElementById("resp" + ind);
-          if (ind == $ansverNumber$) {
-              elem.style.background = "green";
-
-              ref = document.getElementById("nextClick");
-              ref.style.visibility = "visible";
-
-          }
-          else {
-              elem.style.background = "red";
-          }
+      function resp(ind)
+      {
+          window.location = "$currentPage$"+"&ansver="+ind;
       }
 
     </script>
@@ -46,22 +37,22 @@ visibility:hidden
 	<td colspan="3" style="color: red; font-size: 6em"> $word$ </td>
 </tr>
 <tr> 
-<td class="response" id="resp0" onclick = "resp(0)"> $translation0$</td>
-<td class="response"   id="resp1" onclick = "resp(1)"> $translation1$</td>
-<td class="response"  id="resp2"  onclick = "resp(2)"> $translation2$</td>
+<td class="response" id="resp0" onclick = "resp(0)"  style="background:$bg0$"> $translation0$</td>
+<td class="response"   id="resp1" onclick = "resp(1)" style="background:$bg1$"> $translation1$</td>
+<td class="response"  id="resp2"  onclick = "resp(2)" style="background:$bg2$"> $translation2$</td>
 </tr>
 <tr> 
-<td class="response" id="resp3" onclick = "resp(3)"> $translation3$</td>
-<td class="response"   id="resp4" onclick = "resp(4)"> $translation4$</td>
-<td class="response"  id="resp5"  onclick = "resp(5)"> $translation5$</td>
+<td class="response" id="resp3" onclick = "resp(3)" style="background:$bg3$"> $translation3$</td>
+<td class="response"   id="resp4" onclick = "resp(4)" style="background:$bg4$"> $translation4$</td>
+<td class="response"  id="resp5"  onclick = "resp(5)" style="background:$bg5$"> $translation5$</td>
 </tr>
 <tr> 
-<td class="response" id="resp6" onclick = "resp(6)"> $translation6$</td>
-<td class="response"   id="resp7" onclick = "resp(7)"> $translation7$</td>
-<td class="response"  id="resp8"  onclick = "resp(8)"> $translation8$</td>
+<td class="response" id="resp6" onclick = "resp(6)" style="background:$bg6$"> $translation6$</td>
+<td class="response"   id="resp7" onclick = "resp(7)" style="background:$bg7$"> $translation7$</td>
+<td class="response"  id="resp8"  onclick = "resp(8)" style="background:$bg8$"> $translation8$</td>
 </tr>
 </table>
 
-<a id="nextClick" href="\next"> дальше </a>
+<a id="nextClick" href="$nextpage$"> дальше </a>
 </body>
 </html>

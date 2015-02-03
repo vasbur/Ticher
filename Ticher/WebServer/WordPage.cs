@@ -5,34 +5,68 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Ticher.Dictionary;
+using Ticher.UserCashe;
 
 namespace Ticher.WebServer
 {
     static class WordPage
     {
-        static public string GetPage()
+        static public string GetPage(UserData User, int page)
         {
             StreamReader st = new StreamReader("C:\\GIT\\Ticher\\Ticher\\WebServer\\WordPage.html");
             string result = "";
             while (!st.EndOfStream)
                 result += st.ReadLine();
 
-            Quiz q = DictionarySet.getQuiz(9);
+
+            Quiz q;
+
+            if (User.quizSet.Count >= page)
+                q = User.quizSet[page - 1];
+            else
+            {
+                if (User.quizSet.Count <= 10)
+                    q = DictionarySet.getQuiz(0, 100, 9);
+                else if (User.quizSet.Count <= 20)
+                    q = DictionarySet.getQuiz(101, 1000, 9);
+                else
+                    q = DictionarySet.getQuiz(1001, int.MaxValue, 9);
+
+                User.quizSet.Add(q);
+            }
 
             result = result.Replace("$word$", q.word);
             result = result.Replace("$ansverNumber$", q.ansverNumber.ToString());
-            result = result.Replace("$translation0$", q.translationList[0]);
-            result = result.Replace("$translation1$", q.translationList[1]);
-            result = result.Replace("$translation2$", q.translationList[2]);
-            result = result.Replace("$translation3$", q.translationList[3]);
-            result = result.Replace("$translation4$", q.translationList[4]);
-            result = result.Replace("$translation5$", q.translationList[5]);
-            result = result.Replace("$translation6$", q.translationList[6]);
-            result = result.Replace("$translation7$", q.translationList[7]);
-            result = result.Replace("$translation8$", q.translationList[8]); 
 
+            for (int i = 0; i < 9; i++)
+            {
+                result = result.Replace("$translation"+i.ToString()+"$", q.translationList[i]);
+                result = result.Replace("$bg" + i.ToString() + "$", getColor(q, i));
+
+            }
+            
+            string currentPageLink = "\\quize?sid=" + User.sid.ToString() + "&page=" + (User.quizSet.Count).ToString();
+            result = result.Replace("$currentPage$", currentPageLink); 
+
+            string nextPageLink = "\\quize?sid="+User.sid.ToString()+"&page="+(User.quizSet.Count+1).ToString();
+            result = result.Replace("$nextpage$", nextPageLink);
+
+            if (q.ansvers.Where(x => (x == q.ansverNumber)).ToList().Count > 0)
+                result = result.Replace("visibility:hidden", "");
 
             return result;
+
+        }
+
+        static private string getColor(Quiz q, int ind)
+        {
+            if (q.ansvers.Where(x => (x == ind)).ToList().Count == 0)
+                return "white";
+            else if (q.ansverNumber == ind)
+                return "green";
+            else
+                return "red";
+
 
         }
     }

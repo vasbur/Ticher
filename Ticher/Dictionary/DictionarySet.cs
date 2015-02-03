@@ -12,7 +12,14 @@ namespace Ticher.Dictionary
     {
         public string word { get; set; }
         public List<string> translationList;
-        public int ansverNumber; 
+        public int ansverNumber;
+        public List<int> ansvers; 
+
+        public Quiz()
+        {
+            translationList = new List<string>();
+            ansvers = new List<int>();
+        }
 
     }
    static class DictionarySet
@@ -23,7 +30,7 @@ namespace Ticher.Dictionary
         {
             StreamReader sr = new StreamReader("C:\\GIT\\Ticher\\data.csv");
 
-            for (int i = 0; i < 500; i++)
+            for (int i = 0; i < 1000; i++)
             {
                 string itemLine = sr.ReadLine();
                 string word = itemLine.Substring(0, itemLine.IndexOf(";"));
@@ -35,7 +42,7 @@ namespace Ticher.Dictionary
                     string translation = TranslaterTools.GetTranslation(word);
                     string pos = TranslaterTools.GetPos(word); 
                     if (translation != null)
-                        itemList.Add(new DictionaryItem(word, pos, translation, float.Parse(freq)));
+                        itemList.Add(new DictionaryItem(word, pos, translation, float.Parse(freq), i));
                 }
                 catch (Exception e)
                 {
@@ -53,25 +60,32 @@ namespace Ticher.Dictionary
        
         }
 
-        static public Quiz getQuiz(int numberOfVariant)
+        static public Quiz getQuiz( int numberOfVariant)
         {
+            return getQuiz(0, int.MaxValue, numberOfVariant);
+        }
+
+        static public Quiz getQuiz(int beginRank, int endRank, int numberOfVariant)
+        {
+
+            List<DictionaryItem> currentList = itemList.Where(x => (x.rank >= beginRank) && (x.rank <= endRank)).ToList();
+
             Quiz result = new Quiz();
 
             Random ran = new Random();
 
-            int item = ran.Next(itemList.Count);
-            DictionaryItem trueResponse = itemList[item];
+            int item = ran.Next(currentList.Count);
+            DictionaryItem trueResponse = currentList[item];
             result.word = trueResponse.word;
             result.ansverNumber = ran.Next(3);
-            result.translationList = new List<string>();
-
+         
             
             for (int i = 0; i < numberOfVariant; i++)
                 if (i == result.ansverNumber)
                     result.translationList.Add(trueResponse.translation);
                 else
                 {
-                    List<string> listOfVar = itemList.Where(x => ((x.pos == trueResponse.pos) && (x.word != trueResponse.word)))
+                    List<string> listOfVar = currentList.Where(x => ((x.pos == trueResponse.pos) && (x.word != trueResponse.word)))
                                                      .Where(x => (isInto(result.translationList, x.translation)==false))
                                                      .Select(x => x.translation).ToList();
                     if (listOfVar.Count > 0)

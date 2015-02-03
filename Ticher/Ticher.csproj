@@ -50,6 +50,10 @@
     <Compile Include="Translater\XmlParser\DicResult.cs" />
     <Compile Include="Translater\XmlParser\Text.cs" />
     <Compile Include="Translater\XmlParser\Tr.cs" />
+    <Compile Include="UserCashe\UserCasheTools.cs" />
+    <Compile Include="UserCashe\UserData.cs" />
+    <Compile Include="WebServer\Error404.cs" />
+    <Compile Include="WebServer\MainPage.cs" />
     <Compile Include="WebServer\ResponseThread.cs" />
     <Compile Include="WebServer\ServerRoot.cs" />
     <Compile Include="WebServer\WordPage.cs" />
@@ -58,6 +62,8 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="WebServer\Error404.html" />
+    <Content Include="WebServer\MainPage.html" />
     <Content Include="WebServer\WordPage.html" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
