@@ -30,11 +30,25 @@ namespace Ticher.UserCashe
                 if (totalansver > 0)
                 {
                     int trueansver = qset.Where(x => x.isTrueAnsver()).ToList().Count;
-                    totalCount += rep * trueansver / totalansver;
+                    totalCount += (int)(rep * getFrequensyEstimate((double)trueansver / (double)totalansver, totalansver));
                 }
             }
 
              return totalCount;
+        }
+
+        private double getFrequensyEstimate(double p, int n)
+        {
+            double d = p * (1 - p) / n;
+            d = Math.Sqrt(d);
+
+            double pm = p - 2 * d;
+ 
+            pm =  (9 * pm - 1) / 8;
+
+            return (pm < 0) ? 0 : pm;
+
+
         }
 
     }
