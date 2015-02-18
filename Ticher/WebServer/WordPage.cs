@@ -25,12 +25,15 @@ namespace Ticher.WebServer
                 q = User.quizSet[page - 1];
             else
             {
-                if (User.quizSet.Count <= 10)
+                if (User.quizSet.Count < 10)
                     q = DictionarySet.getQuiz(0, 100, 9);
-                else if (User.quizSet.Count <= 20)
+                else if (User.quizSet.Count < 20)
                     q = DictionarySet.getQuiz(101, 1000, 9);
-                else
-                    q = DictionarySet.getQuiz(1001, int.MaxValue, 9);
+                else if (User.quizSet.Count < 30)
+                    q = DictionarySet.getQuiz(1001, 10000, 9);
+                else 
+                    q = DictionarySet.getQuiz(10000, int.MaxValue, 9);
+
 
                 User.quizSet.Add(q);
             }
@@ -53,6 +56,8 @@ namespace Ticher.WebServer
 
             if (q.ansvers.Where(x => (x == q.ansverNumber)).ToList().Count > 0)
                 result = result.Replace("visibility:hidden", "");
+
+            result = result.Replace("$log$", "оценка количества слов " + User.ditionaryEstimate().ToString());
 
             return result;
 

@@ -1,0 +1,2 @@
+<?xml version="1.0" encoding="utf-8"?>
+<DicResult><head/><def pos="noun" ts="elk"><text>elk</text><tr pos="существительное"><text>лось</text><syn pos="существительное"><text>олень</text></syn><mean><text>moose</text></mean><mean><text>deer</text></mean><ex><text>elk hunting</text><tr><text>звероловство лося</text></tr></ex></tr></def><def pos="adjective" ts="elk"><text>elk</text><tr pos="прилагательное"><text>Лосиный</text><mean><text>moose</text></mean></tr></def></DicResult>

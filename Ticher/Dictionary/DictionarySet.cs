@@ -8,20 +8,6 @@ using Ticher.Translater;
 
 namespace Ticher.Dictionary
 {
-    class Quiz
-    {
-        public string word { get; set; }
-        public List<string> translationList;
-        public int ansverNumber;
-        public List<int> ansvers; 
-
-        public Quiz()
-        {
-            translationList = new List<string>();
-            ansvers = new List<int>();
-        }
-
-    }
    static class DictionarySet
     {
         static List<DictionaryItem> itemList;
@@ -30,7 +16,7 @@ namespace Ticher.Dictionary
         {
             StreamReader sr = new StreamReader("C:\\GIT\\Ticher\\data.csv");
 
-            for (int i = 0; i < 1000; i++)
+            for (int i = 0; i < 20000; i++)
             {
                 string itemLine = sr.ReadLine();
                 string word = itemLine.Substring(0, itemLine.IndexOf(";"));
@@ -78,7 +64,7 @@ namespace Ticher.Dictionary
             DictionaryItem trueResponse = currentList[item];
             result.word = trueResponse.word;
             result.ansverNumber = ran.Next(3);
-         
+            result.reprezentNumber = currentList.Count;         
             
             for (int i = 0; i < numberOfVariant; i++)
                 if (i == result.ansverNumber)
@@ -96,6 +82,8 @@ namespace Ticher.Dictionary
             return result;
         
         }
+
+    
 
         static private bool isInto(List<string> translationList, string word)
         {

@@ -43,6 +43,7 @@
   <ItemGroup>
     <Compile Include="Dictionary\DictionaryItem.cs" />
     <Compile Include="Dictionary\DictionarySet.cs" />
+    <Compile Include="Dictionary\Quiz.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Translater\TranslaterTools.cs" />
