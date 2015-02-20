@@ -16,7 +16,7 @@ namespace Ticher.Dictionary
         {
             StreamReader sr = new StreamReader("C:\\GIT\\Ticher\\data.csv");
 
-            for (int i = 0; i < 20000; i++)
+            for (int i = 0; i < 30000; i++)
             {
                 string itemLine = sr.ReadLine();
                 string word = itemLine.Substring(0, itemLine.IndexOf(";"));

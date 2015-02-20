@@ -1,0 +1,2 @@
+<?xml version="1.0" encoding="utf-8"?>
+<DicResult><head/><def pos="noun" ts="diːˈbʌgər"><text>debugger</text><tr pos="существительное"><text>отладчик</text><syn pos="существительное"><text>отладка</text></syn><mean><text>debugging</text></mean><ex><text>gdb debugger</text><tr><text>отладчик GDB</text></tr></ex></tr></def><def pos="adjective" ts="diːˈbʌgər"><text>debugger</text><tr pos="прилагательное"><text>отладочный</text><mean><text>debugging</text></mean><ex><text>debugger version</text><tr><text>отладочная версия</text></tr></ex></tr></def></DicResult>

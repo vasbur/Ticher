@@ -12,7 +12,7 @@ namespace Ticher.UserCashe
         public string  sid { get; set; }
         public List<Quiz> quizSet { get; set; }
 
-        public int ditionaryEstimate()
+        public int ditionaryEstimate(int degree)
         {
             List<int> reprezList = new List<int>();
             int totalCount = 0;
@@ -30,23 +30,28 @@ namespace Ticher.UserCashe
                 if (totalansver > 0)
                 {
                     int trueansver = qset.Where(x => x.isTrueAnsver()).ToList().Count;
-                    totalCount += (int)(rep * getFrequensyEstimate((double)trueansver / (double)totalansver, totalansver));
+                    totalCount += (int)(rep * getFrequensyEstimate((double)trueansver / (double)totalansver, totalansver, degree));
                 }
             }
 
              return totalCount;
         }
 
-        private double getFrequensyEstimate(double p, int n)
+        private double getFrequensyEstimate(double p, int n, int degree)
         {
             double d = p * (1 - p) / n;
             d = Math.Sqrt(d);
 
-            double pm = p - 2 * d;
+            double pm = p + degree * 2 * d;
  
             pm =  (9 * pm - 1) / 8;
 
-            return (pm < 0) ? 0 : pm;
+            if (pm < 0)
+                return 0;
+            else if (pm > 1)
+                return 1;
+            else
+                return pm;
 
 
         }
