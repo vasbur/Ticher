@@ -24,19 +24,7 @@ namespace Ticher.WebServer
             if (User.quizSet.Count >= page)
                 q = User.quizSet[page - 1];
             else
-            {
-                if (User.quizSet.Count < 10)
-                    q = DictionarySet.getQuiz(0, 300, 9);
-                else if (User.quizSet.Count < 20)
-                    q = DictionarySet.getQuiz(301, 2000, 9);
-                else if (User.quizSet.Count < 30)
-                    q = DictionarySet.getQuiz(2001, 10000, 9);
-                else 
-                    q = DictionarySet.getQuiz(10000, int.MaxValue, 9);
-
-
-                User.quizSet.Add(q);
-            }
+                q = User.GetNextQuiz();
 
             result = result.Replace("$word$", q.word);
             result = result.Replace("$ansverNumber$", q.ansverNumber.ToString());
@@ -51,14 +39,19 @@ namespace Ticher.WebServer
             string currentPageLink = "\\quize?sid=" + User.sid.ToString() + "&page=" + (User.quizSet.Count).ToString();
             result = result.Replace("$currentPage$", currentPageLink); 
 
-            string nextPageLink = "\\quize?sid="+User.sid.ToString()+"&page="+(User.quizSet.Count+1).ToString();
+            string nextPageLink;
+            if (page==20)
+                nextPageLink = "\\result?sid=" + User.sid.ToString();
+            else 
+                nextPageLink = "\\quize?sid="+User.sid.ToString()+"&page="+(User.quizSet.Count+1).ToString();
+
             result = result.Replace("$nextpage$", nextPageLink);
 
             if (q.ansvers.Where(x => (x == q.ansverNumber)).ToList().Count > 0)
                 result = result.Replace("visibility:hidden", "");
 
-            result = result.Replace("$log$", "оценка количества слов мин: " + User.ditionaryEstimate(-1).ToString()+
-                " макс: " + User.ditionaryEstimate(1).ToString());
+            result = result.Replace("$log$", "оценка количества слов: " + User.ditionaryEstimate(false).ToString()+
+                " оченка частоты: " + User.ditionaryEstimate(true).ToString());
 
             return result;
 

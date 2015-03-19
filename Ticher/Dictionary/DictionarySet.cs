@@ -51,11 +51,22 @@ namespace Ticher.Dictionary
             return getQuiz(0, int.MaxValue, numberOfVariant);
         }
 
+        static private double TotalFrequency(List<DictionaryItem> dicionaryList)
+        {
+            double result = 0;
+            foreach (DictionaryItem item in dicionaryList)
+                result += item.frequensy;
+
+            return result;
+
+        }
+
         static public Quiz getQuiz(int beginRank, int endRank, int numberOfVariant)
         {
 
             List<DictionaryItem> currentList = itemList.Where(x => (x.rank >= beginRank) && (x.rank <= endRank)).ToList();
 
+            double representFrequency = TotalFrequency(currentList) / TotalFrequency(itemList);
             Quiz result = new Quiz();
 
             Random ran = new Random();
@@ -63,27 +74,38 @@ namespace Ticher.Dictionary
             int item = ran.Next(currentList.Count);
             DictionaryItem trueResponse = currentList[item];
             result.word = trueResponse.word;
-            result.ansverNumber = ran.Next(3);
-            result.reprezentNumber = currentList.Count;         
-            
+            result.ansverNumber = ran.Next(numberOfVariant);
+            result.reprezentNumber = currentList.Count;
+            result.reprezentFrecuency = representFrequency;
+            result.rank = trueResponse.rank;
+
             for (int i = 0; i < numberOfVariant; i++)
                 if (i == result.ansverNumber)
                     result.translationList.Add(trueResponse.translation);
                 else
                 {
-                    List<string> listOfVar = currentList.Where(x => ((x.pos == trueResponse.pos) && (x.word != trueResponse.word)))
-                                                     .Where(x => (isInto(result.translationList, x.translation)==false))
-                                                     .Select(x => x.translation).ToList();
+                    List<string> listOfVar = GetVariantList(currentList, trueResponse, result);
                     if (listOfVar.Count > 0)
                         result.translationList.Add(listOfVar[ran.Next(listOfVar.Count)]);
                     else
-                        result.translationList.Add("");
+                    {
+                        List<string> listOfVar2 = GetVariantList(itemList, trueResponse, result);
+                        if (listOfVar2.Count>0)
+                            result.translationList.Add(listOfVar2[ran.Next(listOfVar.Count)]);
+                        else                
+                            result.translationList.Add("");
+                    }
                 }
             return result;
         
         }
 
-    
+        static private List<string> GetVariantList(List<DictionaryItem> DictList, DictionaryItem trueResponse, Quiz CurrentResult)
+        {
+            return DictList.Where(x => ((x.pos == trueResponse.pos) && (x.translation != trueResponse.translation)))
+                                                     .Where(x => (isInto(CurrentResult.translationList, x.translation) == false))
+                                                     .Select(x => x.translation).ToList();
+        }
 
         static private bool isInto(List<string> translationList, string word)
         {

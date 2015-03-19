@@ -12,7 +12,9 @@ namespace Ticher.Dictionary
         public List<string> translationList;
         public int ansverNumber;
         public List<int> ansvers;
-        public int reprezentNumber; 
+        public int reprezentNumber;
+        public double reprezentFrecuency;
+        public int rank;
 
         public Quiz()
         {

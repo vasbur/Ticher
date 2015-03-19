@@ -44,6 +44,12 @@ namespace Ticher.WebServer
                 }
                 ResponseString = WordPage.GetPage(user, page);
             }
+            else if (rowUrl.IndexOf("/result") > -1)
+            {
+                string sid = ListenerContext.Request.QueryString["sid"];
+                UserData user = UserCasheTools.getUser(sid);
+                ResponseString = ResultPage.GetPage(user);
+            }
             else
                 ResponseString = Error404.getPage();
 
