@@ -19,9 +19,10 @@ namespace Ticher.WebServer
                 result += st.ReadLine();
 
 
-      
-            result = result.Replace("$log$", "оценка количества слов: " + User.ditionaryEstimate(false).ToString()+
-                " оченка частоты: " + User.ditionaryEstimate(true).ToString());
+            double dictinonatyEstimate = User.ditionaryEstimate(false);
+
+            result = result.Replace("$count$",Tools.aRaund(User.ditionaryEstimate(false)).ToString());
+            result = result.Replace("$procent$", Math.Round(User.ditionaryEstimate(true)*100).ToString());
 
             return result;
 
