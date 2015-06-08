@@ -6,21 +6,40 @@
 <style>
 td a:hover
 {
-	background: red
+
+box-shadow: 2px 2px black;  
+top:2px;
+left:2px; 
 }
 
     td {
 border: 0px; 
-        padding: 12px 3px; 
-    }
+padding: 5px; 
+position:relative; 
+   }
+
+
+td.wrong a {
+background:red
+}
+
+td.correct a {
+background:green
+}
+
 td a
 {
 font-size: 2em;
-padding:10px; 
-background-color: pink;
+padding:15px; 
+ margin:5px; 
  border-radius:10px; 
-  transition-duration: 0.5s;
-  
+  transition-duration: 0.3s;
+border: 1px solid black; 
+display: block;
+box-shadow: 5px 5px black;
+position: relative;
+top:0px; 
+left:0px;
 }
 
 a.nextClick
@@ -47,26 +66,26 @@ margin:20px;
  <body>
 
      Выберите слово, которое наиболее точно соответствует переводу
-     </br>
+     <br/>
 
 <table  border="1">
 <tr>
 	<td colspan="3" style="color: red; font-size: 6em"> $word$ </td>
 </tr>
 <tr> 
-<td class="response">  <a href="fff">   $translation0$ </a> </td>
-<td class="response"  > <a href="fff"> $translation1$</a></td>
-<td class="response"  > <a href="fff"> $translation2$</a></td>
+<td class="$classes0$">  <a href="$link0$">   $translation0$ </a> </td>
+<td class="$classes1$"  > <a href="$link1$"> $translation1$</a></td>
+<td class="$classes2$"  > <a href="$link2$"> $translation2$</a></td>
 </tr>
 <tr> 
-<td class="response"  > <a href="fff"> $translation3$</a></td>
-<td class="response"  > <a href="fff"> $translation4$</a></td>
-<td class="response"  > <a href="fff"> $translation5$</a></td>
+<td class="$classes3$"  > <a href="$link3$"> $translation3$</a></td>
+<td class="$classes4$"  > <a href="$link4$"> $translation4$</a></td>
+<td class="$classes5$"  > <a href="$link5$"> $translation5$</a></td>
 </tr>
 <tr> 
-<td class="response"  > <a href="fff"> $translation6$</a></td>
-<td class="response"   > <a href="fff"> $translation7$</a></td>
-<td class="response"  > <a href="fff"> $translation8$</a></td>
+<td class="$classes6$"  > <a href="$link6$"> $translation6$</a></td>
+<td class="$classes7$"   > <a href="$link7$"> $translation7$</a></td>
+<td class="$classes8$"  > <a href="$link8$"> $translation8$</a></td>
 </tr>
 </table>
 

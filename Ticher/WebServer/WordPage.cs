@@ -20,7 +20,7 @@ namespace Ticher.WebServer
 
 
             Quiz q;
-
+          
             if (User.quizSet.Count >= page)
                 q = User.quizSet[page - 1];
             else
@@ -28,15 +28,17 @@ namespace Ticher.WebServer
 
             result = result.Replace("$word$", q.word);
             result = result.Replace("$ansverNumber$", q.ansverNumber.ToString());
-
+            string currentPageLink = "\\quize?sid=" + User.sid.ToString() + "&page=" + (User.quizSet.Count).ToString();
+       
             for (int i = 0; i < 9; i++)
             {
                 result = result.Replace("$translation"+i.ToString()+"$", q.translationList[i]);
-                result = result.Replace("$bg" + i.ToString() + "$", getColor(q, i));
+                result = result.Replace("$link" + i.ToString() + "$", currentPageLink + "&ansver=" + i.ToString());
+
+                result = result.Replace("$classes" + i.ToString() + "$", getclasses(q, i));
 
             }
             
-            string currentPageLink = "\\quize?sid=" + User.sid.ToString() + "&page=" + (User.quizSet.Count).ToString();
             result = result.Replace("$currentPage$", currentPageLink); 
 
             string nextPageLink;
@@ -50,21 +52,21 @@ namespace Ticher.WebServer
             if (q.ansvers.Where(x => (x == q.ansverNumber)).ToList().Count > 0)
                 result = result.Replace("visibility:hidden", "");
 
-            result = result.Replace("$log$", "оценка количества слов: " + User.ditionaryEstimate(false).ToString()+
-                " оченка частоты: " + User.ditionaryEstimate(true).ToString());
-
+        //    result = result.Replace("$log$", "оценка количества слов: " + User.ditionaryEstimate(false).ToString()+
+          //      " оченка частоты: " + User.ditionaryEstimate(true).ToString());
+            result = result.Replace("$log$", ""); 
             return result;
 
         }
 
-        static private string getColor(Quiz q, int ind)
+        static private string getclasses(Quiz q, int ind)
         {
             if (q.ansvers.Where(x => (x == ind)).ToList().Count == 0)
-                return "white";
+                return "blank";
             else if (q.ansverNumber == ind)
-                return "green";
+                return "correct";
             else
-                return "red";
+                return "wrong";
 
 
         }
