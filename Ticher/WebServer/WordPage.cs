@@ -42,15 +42,17 @@ namespace Ticher.WebServer
             result = result.Replace("$currentPage$", currentPageLink); 
 
             string nextPageLink;
-            if (page==20)
+            if (page==12)
                 nextPageLink = "\\result?sid=" + User.sid.ToString();
             else 
                 nextPageLink = "\\quize?sid="+User.sid.ToString()+"&page="+(User.quizSet.Count+1).ToString();
 
             result = result.Replace("$nextpage$", nextPageLink);
 
-            if (q.ansvers.Where(x => (x == q.ansverNumber)).ToList().Count > 0)
+            if (q.ansvers.Count > 0)
                 result = result.Replace("visibility:hidden", "");
+
+            result = result.Replace("$n$", page.ToString()); 
 
             result = result.Replace("$log$", "оценка количества слов: " + User.ditionaryEstimate(false).ToString()+
                 " оченка частоты: " + User.ditionaryEstimate(true).ToString());
@@ -61,10 +63,10 @@ namespace Ticher.WebServer
 
         static private string getclasses(Quiz q, int ind)
         {
-            if (q.ansvers.Where(x => (x == ind)).ToList().Count == 0)
-                return "blank";
-            else if (q.ansverNumber == ind)
+            if ((q.ansvers.Count>0) && (q.ansverNumber == ind))
                 return "correct";
+            else if (q.ansvers.Where(x => (x == ind)).ToList().Count == 0)
+                return "blank";
             else
                 return "wrong";
 

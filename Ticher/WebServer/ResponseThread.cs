@@ -38,7 +38,7 @@ namespace Ticher.WebServer
                 if (user.quizSet.Count >= page)
                 {
                     Quiz q = user.quizSet[page - 1];
-                    if (ansver != null)
+                    if ( (ansver != null) && (q.ansvers.Count==0))
                     {
                         int numAnsver = int.Parse(ansver);
                         if (q.ansvers.Where(x => x == numAnsver).ToList().Count == 0)

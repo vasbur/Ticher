@@ -18,8 +18,7 @@ namespace Ticher.UserCashe
             result.Add(0);
             result.Add(300);
             result.Add(2000);
-            result.Add(5000);
-            result.Add(12000);
+            result.Add(15000);
             result.Add(30000);
 
             return result; 
@@ -37,7 +36,7 @@ namespace Ticher.UserCashe
                 List<Quiz> trueQuises = quizSet.Where(x => (x.rank <= currentRank) && (x.rank > prevRank))
                     .Where(x => x.isTrueAnsver()).ToList();
 
-                if (trueQuises.Count < 4)
+                if (trueQuises.Count < 3)
                 {
 
                     Quiz q = DictionarySet.getQuiz(prevRank, currentRank, 7);
@@ -65,7 +64,7 @@ namespace Ticher.UserCashe
             {
              
                 List<Quiz> qset = quizSet.Where(x => (x.reprezentNumber == rep)).Where(x => x.ansvers.Count>0).ToList();
-                int totalansver = (qset.Count() < 4) ? 4 : qset.Count();
+                int totalansver = (qset.Count() < 3) ? 3 : qset.Count();
 
                 double sumData;
                 if (!isFreq)
