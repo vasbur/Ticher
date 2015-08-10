@@ -40,7 +40,7 @@ namespace Ticher.UserCashe
                 if (trueQuises.Count < 4)
                 {
 
-                    Quiz q = DictionarySet.getQuiz(prevRank, currentRank, 9);
+                    Quiz q = DictionarySet.getQuiz(prevRank, currentRank, 7);
                     quizSet.Add(q);
                     return q;
                 }

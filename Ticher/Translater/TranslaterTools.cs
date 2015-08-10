@@ -15,6 +15,14 @@ namespace Ticher.Translater
         static public string GetTranslation(string word)
         {
             string filename = getDataFile(word);
+
+            if (filename==null)
+            {
+                Console.WriteLine(" no trans for " + word);
+                return null;
+            }
+
+            
             DicResult trans = getTranslationData(filename);
 
             if ((trans.def == null) || (trans.def.tr.Count == 0))
@@ -30,6 +38,14 @@ namespace Ticher.Translater
         static public string GetPos(string word)
         {
             string filename = getDataFile(word);
+
+            if (filename == null)
+            {
+                Console.WriteLine(" no trans for " + word);
+                return null;
+            }
+
+            
             DicResult trans = getTranslationData(filename);
 
             if ((trans.def == null) || (trans.def.tr.Count == 0))
@@ -52,36 +68,38 @@ namespace Ticher.Translater
             }
             catch { }
 
-            string apikey = "dict.1.1.20150130T114115Z.de5d40ac6c8cf588.8a98367d4ef3774714dc615033196188432d4963";
-            string url = "https://dictionary.yandex.net/api/v1/dicservice/lookup?key="+apikey+"&lang=en-ru&text="+word;
+            return null;
 
-            string s; 
-            HttpWebRequest Request = (HttpWebRequest)HttpWebRequest.Create(url);
-            Request.Timeout = int.MaxValue;
-            try
-            {
-                HttpWebResponse Response = (HttpWebResponse)Request.GetResponse();
-                Stream ResponseStream = Response.GetResponseStream();
-                StreamReader sr = new StreamReader(ResponseStream, Encoding.UTF8);
-                s = sr.ReadToEnd();
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine("api error: " + url);
-                throw e;
-            }
+            //string apikey = "dict.1.1.20150130T114115Z.de5d40ac6c8cf588.8a98367d4ef3774714dc615033196188432d4963";
+            //string url = "https://dictionary.yandex.net/api/v1/dicservice/lookup?key="+apikey+"&lang=en-ru&text="+word;
 
-            try
-            {
-                StreamWriter SW = new StreamWriter(path);
-                SW.Write(s);
-                SW.Close();
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine(e.Message);
-                throw e;
-            }
+            //string s; 
+            //HttpWebRequest Request = (HttpWebRequest)HttpWebRequest.Create(url);
+            //Request.Timeout = int.MaxValue;
+            //try
+            //{
+            //    HttpWebResponse Response = (HttpWebResponse)Request.GetResponse();
+            //    Stream ResponseStream = Response.GetResponseStream();
+            //    StreamReader sr = new StreamReader(ResponseStream, Encoding.UTF8);
+            //    s = sr.ReadToEnd();
+            //}
+            //catch (Exception e)
+            //{
+            //    Console.WriteLine("api error: " + url);
+            //    throw e;
+            //}
+
+            //try
+            //{
+            //    StreamWriter SW = new StreamWriter(path);
+            //    SW.Write(s);
+            //    SW.Close();
+            //}
+            //catch (Exception e)
+            //{
+            //    Console.WriteLine(e.Message);
+            //    throw e;
+            //}
 
            
             return path; 

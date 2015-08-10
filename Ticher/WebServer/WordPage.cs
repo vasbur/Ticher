@@ -30,7 +30,7 @@ namespace Ticher.WebServer
             result = result.Replace("$ansverNumber$", q.ansverNumber.ToString());
             string currentPageLink = "\\quize?sid=" + User.sid.ToString() + "&page=" + (User.quizSet.Count).ToString();
        
-            for (int i = 0; i < 9; i++)
+            for (int i = 0; i < 7; i++)
             {
                 result = result.Replace("$translation"+i.ToString()+"$", q.translationList[i]);
                 result = result.Replace("$link" + i.ToString() + "$", currentPageLink + "&ansver=" + i.ToString());
@@ -52,9 +52,9 @@ namespace Ticher.WebServer
             if (q.ansvers.Where(x => (x == q.ansverNumber)).ToList().Count > 0)
                 result = result.Replace("visibility:hidden", "");
 
-        //    result = result.Replace("$log$", "оценка количества слов: " + User.ditionaryEstimate(false).ToString()+
-          //      " оченка частоты: " + User.ditionaryEstimate(true).ToString());
-            result = result.Replace("$log$", ""); 
+            result = result.Replace("$log$", "оценка количества слов: " + User.ditionaryEstimate(false).ToString()+
+                " оченка частоты: " + User.ditionaryEstimate(true).ToString());
+       //     result = result.Replace("$log$", ""); 
             return result;
 
         }

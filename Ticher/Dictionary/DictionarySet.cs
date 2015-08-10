@@ -26,9 +26,11 @@ namespace Ticher.Dictionary
                 try
                 {
                     string translation = TranslaterTools.GetTranslation(word);
-                    string pos = TranslaterTools.GetPos(word); 
                     if (translation != null)
+                    {
+                        string pos = TranslaterTools.GetPos(word);
                         itemList.Add(new DictionaryItem(word, pos, translation, float.Parse(freq), i));
+                    }
                 }
                 catch (Exception e)
                 {

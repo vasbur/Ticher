@@ -7,50 +7,91 @@
 td a:hover
 {
 
-box-shadow: 2px 2px black;  
+box-shadow: 0px 0px black;  
 top:2px;
 left:2px; 
 }
 
     td {
 border: 0px; 
-padding: 5px; 
+padding: 0px; 
 position:relative; 
    }
 
 
 td.wrong a {
-background:red
+background-color:mediumvioletred;
+top:0;
+left: 0 ;
+box-shadow:none;
 }
 
 td.correct a {
-background:green
-}
+background-color:lightgreen;
+top:0;
+left: 0 ;
+box-shadow:none;}
 
+        td.quizword {
+        color: red; 
+        font-size: 46px; 
+        padding:20px;
+        vertical-align:top; 
+        min-width: 250px;
+        }
 td a
 {
-font-size: 2em;
-padding:15px; 
+font-size: 22px;
+padding:5px; 
  margin:5px; 
- border-radius:10px; 
-  transition-duration: 0.3s;
-border: 1px solid black; 
+ border-radius:5px; 
+  transition-duration: 0.2s;
+border: 1px solid grey; 
 display: block;
-box-shadow: 5px 5px black;
+box-shadow: 1px 1px 1px grey;
 position: relative;
 top:0px; 
 left:0px;
+color: black;
+text-decoration:none;
+min-width:250px;
 }
 
 a.nextClick
 { 
-visibility:hidden
+display:inline-block;
+background-color: lightgreen;
+text-decoration:none;
+color:black;
+border-radius:10px; 
+font-size: 22px;
+padding:5px; 
+ margin:25px 10px 5px 5px; 
+ border-radius:5px; 
+  transition-duration: 0.2s;
+border: 1px solid grey; 
+display: inline-block;
+box-shadow: 5px 5px 15px 2px grey; 
+visibility:hidden;
 }
 
+    div.bottom {
+    text-align: right; 
+    }
+
 table {
-border: 0px; 
-margin:20px; 
+border: 0px solid black; 
+padding:20px; 
+background-color:white;
+box-shadow: 5px 5px 15px 2px grey; 
 }
+
+    div.panel {
+    background-color:rgb(240, 240, 240);
+    width:600px;
+    padding:30px; 
+    
+    }
 </style>
 
 
@@ -64,33 +105,37 @@ margin:20px;
 
  </head>
  <body>
-
-     Выберите слово, которое наиболее точно соответствует переводу
-     <br/>
+     <div class="panel">
+     <h3>Выберите слово, которое наиболее точно соответствует переводу</h3>
+     
 
 <table  border="1">
 <tr>
-	<td colspan="3" style="color: red; font-size: 6em"> $word$ </td>
+	<td rowspan="7" class="quizword"> $word$ </td>
+	<td class="$classes0$">  <a href="$link0$">   $translation0$ </a> </td>
 </tr>
 <tr> 
-<td class="$classes0$">  <a href="$link0$">   $translation0$ </a> </td>
 <td class="$classes1$"  > <a href="$link1$"> $translation1$</a></td>
+</tr>
+<tr> 
 <td class="$classes2$"  > <a href="$link2$"> $translation2$</a></td>
 </tr>
 <tr> 
 <td class="$classes3$"  > <a href="$link3$"> $translation3$</a></td>
+</tr>
+<tr> 
 <td class="$classes4$"  > <a href="$link4$"> $translation4$</a></td>
+</tr>
+<tr> 
 <td class="$classes5$"  > <a href="$link5$"> $translation5$</a></td>
 </tr>
 <tr> 
 <td class="$classes6$"  > <a href="$link6$"> $translation6$</a></td>
-<td class="$classes7$"   > <a href="$link7$"> $translation7$</a></td>
-<td class="$classes8$"  > <a href="$link8$"> $translation8$</a></td>
 </tr>
 </table>
-
-<a class="nextClick" href="$nextpage$"> дальше </a>
-
+<div class="bottom"> <a class="nextClick" href="$nextpage$"> дальше </a></div>
+         </div>
+         
      <p> $log$</p>
 </body>
 </html>
