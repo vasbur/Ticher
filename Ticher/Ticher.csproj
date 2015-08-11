@@ -52,6 +52,7 @@
     <Compile Include="Translater\XmlParser\DicResult.cs" />
     <Compile Include="Translater\XmlParser\Text.cs" />
     <Compile Include="Translater\XmlParser\Tr.cs" />
+    <Compile Include="UserCashe\UserCacheStatisticData.cs" />
     <Compile Include="UserCashe\UserCasheTools.cs" />
     <Compile Include="UserCashe\UserData.cs" />
     <Compile Include="WebServer\Error503.cs" />

@@ -32,5 +32,23 @@ namespace Ticher.UserCashe
            List<UserData> sel = userlist.Where(x => (x.sid == sid)).ToList();
            return (sel.Count == 0) ? null : sel[0];
        }
+
+       public static UserCacheStatisticData getStaicstic()
+       {
+           UserCacheStatisticData result = new UserCacheStatisticData();
+           result.UserOnStep = new List<int>();
+           for (int i = 1; i <= 12; i++)
+           {
+               result.UserOnStep.Add(0);
+               foreach (UserData User in userlist) 
+                   if (User.quizSet.Count>=i)
+                       result.UserOnStep[i-1]++;
+
+           }
+
+
+           return result; 
+
+       }
     }
 }

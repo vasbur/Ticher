@@ -20,22 +20,50 @@ input.button24 {
 } 
 a.button24:hover { background: linear-gradient(#f5ae00, #f59500) #f5ae00; }
 a.button24:active { background: linear-gradient(#f59500, #f5ae00) #f59500; }
+
+div.panel {
+    background-color:rgb(240, 240, 240);
+    width:600px;
+    padding:30px; 
+    
+    }
+
+a.nextClick
+{ 
+display:inline-block;
+background-color: lightgreen;
+text-decoration:none;
+color:black;
+border-radius:10px; 
+font-size: 22px;
+padding:5px; 
+ margin:25px 10px 5px 5px; 
+ border-radius:5px; 
+  transition-duration: 0.2s;
+border: 1px solid grey; 
+display: inline-block;
+box-shadow: 5px 5px 15px 2px grey; 
+}
+
+    div.bottom {
+    text-align: right; 
+    }
+
+
 </style>
 
-    <script>
-        function test() {
-            window.location = "/startQuize";
-        }
 
-    </script>
    
  </head>
 <body>
-Ответье на 20 вопросов и вы узнаете,
-    <br/> сколько слов английского языка вам известно
+    <div class="panel">
+<h3>Ответье на 12 вопросов и вы узнаете,
+    <br/> сколько слов английского языка вам известно </h3>
 
 <br/>
-<input type="button" class="button24" value="начать тест" onclick="test();"/>
  	
+    <div class="bottom"> <a class="nextClick" href="/startQuize"> начать тест </a></div>
+         </div>
+    </div>
 </body>
 </html>

@@ -2,13 +2,38 @@
 <html  lang="en" xmlns="http://www.w3.org/1999/xhtml">
  <head>
   <meta charset="utf-8"/>
+     <style>
+
+         div.panel {
+    background-color:rgb(240, 240, 240);
+    width:600px;
+    padding:30px; 
+    
+    }
+
+         div.Table {
+border: 0px solid black; 
+padding:20px; 
+background-color:white;
+box-shadow: 5px 5px 15px 2px grey; 
+}
+
+
+         strong {
+             color:red;
+         }
+
+
+     </style>
   <title>Обучение</title>
      </head> 
  <body>
-     Результаты теста:
-
-     <p>Вы знаете приблизительно $count$ английских слов</p>
-     <p>Вам понятно около $procent$ процентов слов в тексте</p>
-
+     <div class="panel">
+<h2> Результаты теста</h2>
+         <div class="Table">
+     <h3>Вы знаете приблизительно <strong>$count$ </strong> английских слов</h3>
+     <h3>Вам понятно около <strong>$procent$</strong> процентов слов в тексте</h3>
+         </div>
+             </div>
 </body>
 </html>
