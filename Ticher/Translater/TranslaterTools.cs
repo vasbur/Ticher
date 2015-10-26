@@ -60,7 +60,7 @@ namespace Ticher.Translater
 
         static private string getDataFile(string word)
         {
-            string path = "C:\\GIT\\Ticher\\TranslationData\\"+word+".xml";
+            string path = MainContext.dictionaryDir+"\\"+word+".xml";
             try
             {
                 StreamReader SR = new StreamReader(path);

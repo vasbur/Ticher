@@ -11,7 +11,7 @@ namespace Ticher.WebServer
     {
         static public string getPage(string errorDescription)
         {
-            StreamReader st = new StreamReader("C:\\GIT\\Ticher\\Ticher\\WebServer\\Error503.html");
+            StreamReader st = new StreamReader(MainContext.pagesDir + "\\Error503.html");
             string result = "";
             while (!st.EndOfStream)
                 result += st.ReadLine();

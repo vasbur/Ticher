@@ -11,7 +11,7 @@ namespace Ticher.WebServer
     {
         static public string getPage()
         {
-            StreamReader st = new StreamReader("C:\\GIT\\Ticher\\Ticher\\WebServer\\Error404.html");
+            StreamReader st = new StreamReader(MainContext.pagesDir+"\\Error404.html");
             string result = "";
             while (!st.EndOfStream)
                 result += st.ReadLine();

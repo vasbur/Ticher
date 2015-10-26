@@ -13,7 +13,7 @@ namespace Ticher.WebServer
     {
         static public string GetPage(UserData User, int page)
         {
-            StreamReader st = new StreamReader("C:\\GIT\\Ticher\\Ticher\\WebServer\\WordPage.html");
+            StreamReader st = new StreamReader(MainContext.pagesDir + "\\WordPage.html");
             string result = "";
             while (!st.EndOfStream)
                 result += st.ReadLine();

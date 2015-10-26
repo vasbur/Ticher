@@ -14,9 +14,9 @@ namespace Ticher.Dictionary
 
         static private void LoadDict()
         {
-            StreamReader sr = new StreamReader("C:\\GIT\\Ticher\\data.csv");
+            StreamReader sr = new StreamReader(MainContext.dictionaryDir+"\\data.csv");
 
-            StreamWriter sw = new StreamWriter("C:\\GIT\\Ticher\\data_out.csv", true, Encoding.Default);
+         //   StreamWriter sw = new StreamWriter("C:\\GIT\\Ticher\\data_out.csv", true, Encoding.Default);
 
             for (int i = 0; i < 30000; i++)
             {
@@ -32,7 +32,7 @@ namespace Ticher.Dictionary
                     {
                         string pos = TranslaterTools.GetPos(word);
                         itemList.Add(new DictionaryItem(word, pos, translation, float.Parse(freq), i));
-                        sw.WriteLine(word + ";" + pos + ";" + translation + ";" + freq);
+           //             sw.WriteLine(word + ";" + pos + ";" + translation + ";" + freq);
                     }
                 }
                 catch (Exception e)
@@ -42,7 +42,7 @@ namespace Ticher.Dictionary
                 }
             }
 
-            sw.Close();
+            //sw.Close();
         }
 
         static  DictionarySet()
