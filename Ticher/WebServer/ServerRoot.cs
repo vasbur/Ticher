@@ -21,7 +21,7 @@ namespace Ticher.WebServer
         public ServerRoot()
         {
             Listener = new HttpListener();
-            Listener.Prefixes.Add("http://*:" + 555+ "/");
+            Listener.Prefixes.Add("http://*:" + MainContext.port+ "/");
             Listener.Start();
 
             while (true)

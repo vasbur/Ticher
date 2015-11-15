@@ -13,7 +13,8 @@ namespace Ticher
         {
 
             MainContext.dictionaryDir = args[0];
-            MainContext.pagesDir = args[1]; 
+            MainContext.pagesDir = args[1];
+            MainContext.port = args[2]; 
             Dictionary.DictionarySet.getQuiz(9);
             Console.WriteLine("dictionary is load");
             try
@@ -35,6 +36,7 @@ namespace Ticher
     {
         public static string pagesDir { get; set; }
         public static string dictionaryDir { get; set; }
+        public static string  port { get; set; } 
 
     }
 }

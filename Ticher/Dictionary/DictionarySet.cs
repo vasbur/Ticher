@@ -23,8 +23,8 @@ namespace Ticher.Dictionary
                 string itemLine = sr.ReadLine();
                 string word = itemLine.Substring(0, itemLine.IndexOf(";"));
                 itemLine = itemLine.Substring(word.Length+1);
-                string freq = itemLine.Substring(0, itemLine.IndexOf(";"));
-
+                string freq = itemLine.Substring(0, itemLine.IndexOf(";")).Replace(" ","");
+                
                 try
                 {
                     string translation = TranslaterTools.GetTranslation(word);
@@ -32,7 +32,7 @@ namespace Ticher.Dictionary
                     {
                         string pos = TranslaterTools.GetPos(word);
                         itemList.Add(new DictionaryItem(word, pos, translation, float.Parse(freq), i));
-           //             sw.WriteLine(word + ";" + pos + ";" + translation + ";" + freq);
+                     //   sw.WriteLine(word + ";" + pos + ";" + translation + ";" + freq);
                     }
                 }
                 catch (Exception e)
