@@ -54,9 +54,9 @@ namespace Ticher.WebServer
 
             result = result.Replace("$n$", page.ToString()); 
 
-            result = result.Replace("$log$", "оценка количества слов: " + User.ditionaryEstimate(false).ToString()+
-                " оченка частоты: " + User.ditionaryEstimate(true).ToString());
-       //     result = result.Replace("$log$", ""); 
+       //     result = result.Replace("$log$", "оценка количества слов: " + User.ditionaryEstimate(false).ToString()+
+         //       " оченка частоты: " + User.ditionaryEstimate(true).ToString());
+            result = result.Replace("$log$", ""); 
             return result;
 
         }
