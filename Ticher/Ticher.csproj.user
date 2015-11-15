@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|AnyCPU'">
-    <StartArguments>C:\git\Ticher\TranslationData   C:\git\Ticher\Ticher\WebServer 444</StartArguments>
+    <StartArguments>C:\git\Ticher\TranslationData   C:\git\Ticher\Ticher\WebServer 444  C:\git\Ticher\log.txt</StartArguments>
   </PropertyGroup>
   <PropertyGroup>
     <PublishUrlHistory>publish\</PublishUrlHistory>

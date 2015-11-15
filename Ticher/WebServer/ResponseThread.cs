@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Text;
@@ -14,11 +15,20 @@ namespace Ticher.WebServer
 
         private string GetResponseString(HttpListenerRequest Request)
         {
+
             string rowUrl = Request.RawUrl;
             String ResponseString = "";
 
+            StreamWriter SW = new StreamWriter(MainContext.logfile, true);
+            SW.WriteLine(DateTime.Now.ToString()+"; "+   rowUrl);
+            SW.Close(); 
+
+
             if (rowUrl == "/")
+            {
                 ResponseString = MainPage.getPage();
+                MainContext.increaseStartPage();
+            }
             else if (rowUrl == "/startQuize")
             {
                 UserData user = UserCasheTools.getNewUser();
@@ -38,7 +48,7 @@ namespace Ticher.WebServer
                 if (user.quizSet.Count >= page)
                 {
                     Quiz q = user.quizSet[page - 1];
-                    if ( (ansver != null) && (q.ansvers.Count==0))
+                    if ((ansver != null) && (q.ansvers.Count == 0))
                     {
                         int numAnsver = int.Parse(ansver);
                         if (q.ansvers.Where(x => x == numAnsver).ToList().Count == 0)
@@ -56,6 +66,17 @@ namespace Ticher.WebServer
                     throw new PageNotFoundExeption();
 
                 ResponseString = ResultPage.GetPage(user);
+
+                MainContext.increaseEndPage();
+            }
+            else if (rowUrl.IndexOf("/stat") > -1)
+            {
+                ResponseString = "start: " + MainContext.startPage.ToString() + ", end: " + MainContext.endPage.ToString()+", fb posts: "+MainContext.endFB.ToString();
+            }
+            else if (rowUrl.IndexOf("/fb") > -1)
+            {
+                MainContext.endFB++;
+                ResponseString = "СПАСИБО!";
             }
             else
                 throw new PageNotFoundExeption(); 
